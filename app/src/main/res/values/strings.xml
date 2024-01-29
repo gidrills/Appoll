@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Appoll</string>
+    <string name="news_page_title">News</string>
+    <string name="politics_page_title">Politcs</string>
+    <string name="polls_page_title">Polls</string>
+    <string name="profile_page_title">Profile</string>
+
+    <string name="participant_count">Participant count %d</string>
+
+
+</resources>
