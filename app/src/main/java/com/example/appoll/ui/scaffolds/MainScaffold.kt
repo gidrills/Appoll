@@ -1,0 +1,33 @@
+package com.example.appoll.ui.scaffolds
+
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.navigation.NavHostController
+import com.example.appoll.ui.BottomNavGraph
+import com.example.appoll.ui.appbars.AppollBottomBar
+import com.example.appoll.ui.appbars.AppollTopBar
+import com.example.appoll.ui.appbars.MainBar
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ScaffoldMainScreen(modifier: Modifier, navController: NavHostController, topBarState: MutableState<Boolean>,
+                       scrollBehavior: TopAppBarScrollBehavior
+){
+    Scaffold (
+        topBar={
+            MainBar(modifier, scrollBehavior)
+        } ,
+        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        bottomBar = {
+            AppollBottomBar(navController = navController)
+        }
+    ){
+        BottomNavGraph(navController = navController,modifier = modifier.padding(it))
+    }
+}
