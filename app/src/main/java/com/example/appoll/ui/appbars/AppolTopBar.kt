@@ -1,54 +1,32 @@
 package com.example.appoll.ui.appbars
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarState
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AppollTopBar(
-    modifier: Modifier,
-    navController: NavHostController,
-    topAppBarState: MutableState<Boolean>
-) {
-    val shadowModifier = modifier.shadow(
-        elevation = 3.dp,
-        spotColor = Color.DarkGray,
-        //shape = RoundedCornerShape(10.dp)
-    )
-
-    if (topAppBarState.value) {
-        MainBar(shadowModifier)
-    } else {
-        AppollBar(navController, shadowModifier)
-    }
-}
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainBar(modifier:Modifier){
     TopAppBar(
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+        ),
         title = {
             Text(
                 "APPOLL",
@@ -85,7 +63,7 @@ fun AppollBar(navController: NavHostController, modifier: Modifier){
         navigationIcon = {
             IconButton(onClick = { navController.navigateUp()}) {
                 Icon(
-                    imageVector = Icons.Default.ArrowBack,
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Back icon"
                 )
             }
@@ -94,8 +72,41 @@ fun AppollBar(navController: NavHostController, modifier: Modifier){
     )
 }
 
-/*@Preview(showBackground = true)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun GreetingPreview() {
-    AppollBar()
-}*/
+fun AppollBar2(
+    navController: NavHostController,
+    modifier: Modifier,
+    scrollBehavior: TopAppBarScrollBehavior
+) {
+    MediumTopAppBar(
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            titleContentColor = MaterialTheme.colorScheme.primary,
+        ),
+        title = {
+            Text(
+                "Top 10 Title",
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        },
+        navigationIcon = {
+            IconButton(onClick = { navController.navigateUp()}) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Back icon"
+                )
+            }
+        },
+        actions = {
+            IconButton(onClick = { /* do something */ }) {
+                Icon(
+                    imageVector = Icons.Filled.Menu,
+                    contentDescription = "Localized description"
+                )
+            }
+        },
+        scrollBehavior = scrollBehavior
+    )
+}

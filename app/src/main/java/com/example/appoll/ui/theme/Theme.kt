@@ -98,9 +98,11 @@ fun AppollTheme(
     }
     val view = LocalView.current
     if (!view.isInEditMode) {
+        val transparent = Color(0xFF00000000)
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Color.White.toArgb()
+            window.statusBarColor = transparent.toArgb()
+            window.navigationBarColor = transparent.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }

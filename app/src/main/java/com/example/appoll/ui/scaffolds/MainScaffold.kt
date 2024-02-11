@@ -7,27 +7,33 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.appoll.ui.BottomNavGraph
 import com.example.appoll.ui.appbars.AppollBottomBar
-import com.example.appoll.ui.appbars.AppollTopBar
 import com.example.appoll.ui.appbars.MainBar
+import com.example.appoll.ui.screens.HomeScreen
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScaffoldMainScreen(modifier: Modifier, navController: NavHostController, topBarState: MutableState<Boolean>,
-                       scrollBehavior: TopAppBarScrollBehavior
-){
+fun MainScaffold(modifier: Modifier, navController: NavHostController){
+
+    val shadowModifier = modifier.shadow(
+        elevation = 3.dp,
+        spotColor = Color.DarkGray,
+        //shape = RoundedCornerShape(10.dp)
+    )
+
     Scaffold (
         topBar={
-            MainBar(modifier, scrollBehavior)
+            MainBar(shadowModifier)
         } ,
-        modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         bottomBar = {
             AppollBottomBar(navController = navController)
         }
     ){
-        BottomNavGraph(navController = navController,modifier = modifier.padding(it))
+        HomeScreen(modifier = modifier.padding(it), navController = navController)
     }
 }

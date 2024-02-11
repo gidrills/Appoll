@@ -15,7 +15,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.appoll.ui.screens.Screens
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppollBottomBar(navController: NavHostController){
     val screens = listOf(

@@ -3,6 +3,7 @@ package com.example.appoll
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,14 +17,13 @@ import androidx.navigation.compose.rememberNavController
 import com.example.appoll.ui.BottomNavGraph
 import com.example.appoll.ui.MainScreen
 import com.example.appoll.ui.theme.AppollTheme
-import com.example.appoll.ui.appbars.AppollTopBar
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AppollTheme {
-                // A surface container using the 'background' color from the theme
+                enableEdgeToEdge()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

@@ -40,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
     packaging {
         resources {
@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
     implementation("androidx.activity:activity-compose:1.8.1")
@@ -69,10 +68,17 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     //Material Design3
-    implementation ("com.google.android.material:material:1.11.0")
+    //implementation("androidx.compose.material3:material3:1.1.2")
+
+    //loremipsum
+    implementation ("com.thedeanda:lorem:2.1")
+
+    implementation("androidx.compose.material3:material3:1.2.0")
+    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+    implementation("androidx.compose.material:material-android:1.6.0")
+    implementation("androidx.appcompat:appcompat:1.4.1")
     //Navigation Compose
     implementation("androidx.navigation:navigation-compose:2.4.0")
     implementation ("androidx.compose.ui:ui:1.0.0")
-    implementation ("androidx.compose.material:material:1.0.0")
     implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
 }
