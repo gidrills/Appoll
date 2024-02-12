@@ -45,12 +45,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.appoll.R
 import com.example.appoll.data.TopTen
-import com.example.appoll.data.topTens
+import com.example.appoll.data.TopTenOption
 
 @Composable
-fun PollScreen(modifier: Modifier, navController : NavHostController) {
-    Log.d("dasd","dsad")
-
+fun PollScreen(modifier: Modifier, navController : NavHostController, topTen:TopTen) {
     var state by remember { mutableStateOf(0) }
     val titles = listOf("Rank", "Comments", "Stats")
     val density = LocalDensity.current
@@ -65,8 +63,8 @@ fun PollScreen(modifier: Modifier, navController : NavHostController) {
                 )
             }
 
-            items(topTens) {
-                TopTenOptionItem(topTen = it, onClick = { navController.navigate(Screens.Poll.route) })
+            items(topTen.options) {
+                TopTenOptionItem(topTenOption = it, onClick = { navController.navigate(Screens.Poll.route) })
             }
         }
 
@@ -96,7 +94,7 @@ fun PollScreen(modifier: Modifier, navController : NavHostController) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopTenOptionItem(
-    topTen: TopTen,
+    topTenOption: TopTenOption,
     modifier: Modifier = Modifier,
     onClick:()->Unit
 ) {
@@ -127,7 +125,7 @@ fun TopTenOptionItem(
                 contentScale = ContentScale.Crop
             )
             Text(
-                text = "Goku, il principe dei saiyan",
+                text = topTenOption.title,
                 overflow = TextOverflow.Ellipsis,
                 modifier= Modifier
                     .weight(1f)

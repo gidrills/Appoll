@@ -7,9 +7,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.appoll.data.getTopTenById
 import com.example.appoll.ui.scaffolds.MainScaffold
 import com.example.appoll.ui.scaffolds.PollScaffold
 import com.example.appoll.ui.screens.Screens
+import java.util.UUID
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -26,8 +28,9 @@ fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
         composable(route = Screens.Profile.route){
             ProfileScreen(modifier)
         }
-        composable(route = Screens.Poll.route){
-            PollScaffold(modifier, navController)
+        composable(route = Screens.Poll.route + "/{pollId}"){ backStackEntry->
+            val pollId = backStackEntry.arguments?.getString("pollId")
+            PollScaffold(modifier, navController, getTopTenById(UUID.fromString(pollId))!!)
         }
 
     }
