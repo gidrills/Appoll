@@ -27,6 +27,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,8 +48,16 @@ import com.example.appoll.data.PollOption
 
 @Composable
 fun PollScreen(modifier: Modifier, navController : NavHostController, poll: Poll) {
-    var state by remember { mutableStateOf(0) }
     val titles = listOf("Rank", "Comments", "Stats")
+
+    PollOption(modifier = modifier, titles = titles, poll = poll)
+
+}
+
+@Composable
+fun PollOption(modifier: Modifier, titles:List<String>, poll:Poll){
+    var state by remember { mutableStateOf(0) }
+
     val density = LocalDensity.current
     var componentHeight by remember { mutableStateOf(0.dp) }
     Box(modifier = modifier.fillMaxSize()) {
@@ -62,7 +71,7 @@ fun PollScreen(modifier: Modifier, navController : NavHostController, poll: Poll
             }
 
             items(poll.options) {
-                TopTenOptionItem(pollOption = it, onClick = { navController.navigate(Screens.Poll.route) })
+                PollOptionItem(pollOption = it)
             }
         }
 
@@ -91,10 +100,8 @@ fun PollScreen(modifier: Modifier, navController : NavHostController, poll: Poll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopTenOptionItem(
-    pollOption: PollOption,
-    modifier: Modifier = Modifier,
-    onClick:()->Unit
+fun PollOptionItem(
+    pollOption: PollOption
 ) {
     var isThumbUpSelecetd by remember { mutableStateOf(false) }
     var isThumbDownSelected by remember { mutableStateOf(false) }
