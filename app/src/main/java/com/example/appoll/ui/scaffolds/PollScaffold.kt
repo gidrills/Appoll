@@ -11,7 +11,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.navigation.NavHostController
-import com.example.appoll.data.TopTen
+import com.example.appoll.data.Poll
 import com.example.appoll.ui.BottomNavGraph
 import com.example.appoll.ui.appbars.AppollBar2
 import com.example.appoll.ui.appbars.AppollBottomBar
@@ -20,19 +20,19 @@ import com.example.appoll.ui.screens.PollScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PollScaffold(modifier: Modifier, navController: NavHostController, topTen: TopTen) {
+fun PollScaffold(modifier: Modifier, navController: NavHostController, poll: Poll) {
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Scaffold (
         topBar={
-            AppollBar2(navController, modifier, scrollBehavior, topTen)
+            AppollBar2(navController, modifier, scrollBehavior, poll)
         } ,
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         bottomBar = {
             AppollBottomBar(navController = navController)
         }
     ){
-        PollScreen(modifier = modifier.padding(it), navController = navController, topTen)
+        PollScreen(modifier = modifier.padding(it), navController = navController, poll)
     }
 }

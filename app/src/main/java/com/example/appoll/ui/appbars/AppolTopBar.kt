@@ -18,7 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.navigation.NavHostController
-import com.example.appoll.data.TopTen
+import com.example.appoll.data.Poll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -79,7 +79,7 @@ fun AppollBar2(
     navController: NavHostController,
     modifier: Modifier,
     scrollBehavior: TopAppBarScrollBehavior,
-    topTen: TopTen
+    poll: Poll
 ) {
     MediumTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
@@ -88,7 +88,7 @@ fun AppollBar2(
         ),
         title = {
             Text(
-                topTen.title,
+                poll.title,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )

@@ -2,24 +2,24 @@ package com.example.appoll.data
 
 import com.thedeanda.lorem.LoremIpsum
 
-data class TopTenOption(
+data class PollOption(
     val title: String,
-    val description: String,
+    val body: String,
     val likes : Int
 )
 
-fun generateRandomOption():TopTenOption{
+fun generateRandomOption():PollOption{
     val lorem = LoremIpsum.getInstance()
     val randomLikes = (0..100).random()
 
-    return TopTenOption(
+    return PollOption(
         generateRandomWordsString(lorem,3),
         generateRandomWordsString(lorem,15),
         randomLikes
     )
 }
 
-val topTenOptions = listOf<TopTenOption>(
+val pollOptions = listOf<PollOption>(
     generateRandomOption(),
     generateRandomOption(),
     generateRandomOption(),

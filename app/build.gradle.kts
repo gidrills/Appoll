@@ -70,6 +70,8 @@ dependencies {
     //Material Design3
     //implementation("androidx.compose.material3:material3:1.1.2")
 
+    //viewmodelcompose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
     //loremipsum
     implementation ("com.thedeanda:lorem:2.1")
 

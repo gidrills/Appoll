@@ -1,8 +1,6 @@
 package com.example.appoll.ui.screens
 
-import android.util.Log
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,11 +42,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.appoll.R
-import com.example.appoll.data.TopTen
-import com.example.appoll.data.TopTenOption
+import com.example.appoll.data.Poll
+import com.example.appoll.data.PollOption
 
 @Composable
-fun PollScreen(modifier: Modifier, navController : NavHostController, topTen:TopTen) {
+fun PollScreen(modifier: Modifier, navController : NavHostController, poll: Poll) {
     var state by remember { mutableStateOf(0) }
     val titles = listOf("Rank", "Comments", "Stats")
     val density = LocalDensity.current
@@ -63,8 +61,8 @@ fun PollScreen(modifier: Modifier, navController : NavHostController, topTen:Top
                 )
             }
 
-            items(topTen.options) {
-                TopTenOptionItem(topTenOption = it, onClick = { navController.navigate(Screens.Poll.route) })
+            items(poll.options) {
+                TopTenOptionItem(pollOption = it, onClick = { navController.navigate(Screens.Poll.route) })
             }
         }
 
@@ -94,7 +92,7 @@ fun PollScreen(modifier: Modifier, navController : NavHostController, topTen:Top
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TopTenOptionItem(
-    topTenOption: TopTenOption,
+    pollOption: PollOption,
     modifier: Modifier = Modifier,
     onClick:()->Unit
 ) {
@@ -125,7 +123,7 @@ fun TopTenOptionItem(
                 contentScale = ContentScale.Crop
             )
             Text(
-                text = topTenOption.title,
+                text = pollOption.title,
                 overflow = TextOverflow.Ellipsis,
                 modifier= Modifier
                     .weight(1f)

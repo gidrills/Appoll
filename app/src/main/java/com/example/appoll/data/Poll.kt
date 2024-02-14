@@ -6,7 +6,7 @@ import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import java.util.UUID
 
-data class TopTen(
+data class Poll(
     val id: UUID,
     @DrawableRes val imageResourceId: Int,
     val title: String, // Name of the top ten
@@ -15,11 +15,11 @@ data class TopTen(
     val likes : Int,
     val comments : Int,
     val user : String,
-    val options: List<TopTenOption>
+    val options: List<PollOption>
 )
 
 
-val topTens = listOf(
+val polls = listOf(
     generateRandomTopTen(),
     generateRandomTopTen(),
     generateRandomTopTen(),
@@ -33,11 +33,7 @@ val topTens = listOf(
     generateRandomTopTen()
 )
 
-fun getTopTenById(id: UUID) : TopTen?{
-    return topTens.find { it.id==id }
-}
-
-fun generateRandomTopTen(): TopTen {
+fun generateRandomTopTen(): Poll {
     val titles = listOf(
         "Top Ten sneakers 2023",
         "Top Games 2023",
@@ -60,7 +56,7 @@ fun generateRandomTopTen(): TopTen {
     val randomComments = (0..50).random() // Genera un numero casuale tra 0 e 50
     val randomUser = listOf("User1", "User2", "User3", "User4").random()
 
-    return TopTen(
+    return Poll(
         id,
         randomImage,
         randomTitle,
@@ -69,7 +65,7 @@ fun generateRandomTopTen(): TopTen {
         randomLikes,
         randomComments,
         randomUser,
-        topTenOptions
+        pollOptions
     )
 }
 

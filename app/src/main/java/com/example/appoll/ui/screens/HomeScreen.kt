@@ -11,69 +11,55 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.Text
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.appoll.R
-import com.example.appoll.data.topTens
-import com.example.appoll.data.TopTen
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.ThumbUp
-import androidx.compose.material.icons.outlined.Star
-import androidx.compose.material.icons.outlined.ThumbUp
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Surface
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.TextUnitType
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.rememberNavController
-import com.example.appoll.data.generateRandomTopTen
+import com.example.appoll.data.Poll
+import com.example.appoll.ui.state.PollsItemUiState
 import com.example.appoll.ui.theme.AppollTheme
+import com.example.appoll.ui.viewmodel.HomeViewModel
 
 
 @Composable
-fun HomeScreen(modifier: Modifier,navController : NavHostController) {
+fun HomeScreen(modifier: Modifier,
+               navController : NavHostController) {
 
+    val viewModel = HomeViewModel()
     var selectedIndex by rememberSaveable { mutableStateOf(0) }
+
+    viewModel.fetchPolls()
 
     LazyColumn(contentPadding = PaddingValues(10.dp),
         modifier = modifier){
-        items(topTens){
-            TopTenItem(topTen = it,
+        items(viewModel.uiState.pollsItems){
+            TopTenItem(poll = it,
                 selectedIndex=selectedIndex,
                 onItemSelected = {index -> selectedIndex = index},
                 onClick = {navController.navigate(Screens.Poll.route+ "/" + it.id)})
@@ -81,7 +67,7 @@ fun HomeScreen(modifier: Modifier,navController : NavHostController) {
     }
 }
 @Composable
-fun votesIconButton(topTen: TopTen) {
+fun votesIconButton(poll: PollsItemUiState) {
 
     val textFontSize = 12.sp
     val percentageShift = 0.06f
@@ -96,13 +82,13 @@ fun votesIconButton(topTen: TopTen) {
                     .offset(y = iconOffset.dp)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text(textAlign = TextAlign.Start, text = topTen.participantCount.toString(), fontSize = textFontSize)
+            Text(textAlign = TextAlign.Start, text = poll.participantCount.toString(), fontSize = textFontSize)
         }
 
     }
 }
 @Composable
-fun commentsIconButton(topTen: TopTen) {
+fun commentsIconButton(poll: PollsItemUiState) {
 
     val textFontSize = 12.sp
     val percentageShift = 0.115f
@@ -118,7 +104,7 @@ fun commentsIconButton(topTen: TopTen) {
                     .offset(y = iconOffset.dp)
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
-            Text(textAlign = TextAlign.Start, text = topTen.comments.toString(), fontSize = 12.sp)
+            Text(textAlign = TextAlign.Start, text = poll.comments.toString(), fontSize = 12.sp)
         }
 
     }
@@ -128,7 +114,7 @@ fun commentsIconButton(topTen: TopTen) {
 
 @Composable
 fun TopTenItem(
-    topTen: TopTen,
+    poll: PollsItemUiState,
     modifier: Modifier = Modifier,
     selectedIndex: Int,
     onItemSelected: (Int) -> Unit,
@@ -156,14 +142,14 @@ fun TopTenItem(
         ) {
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = topTen.title,
+                    text = poll.title,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .padding(5.dp),
                     fontSize = 20.sp
                 )
                 Text(
-                    text = topTen.description,
+                    text = poll.body,
                     overflow = TextOverflow.Ellipsis,
                     modifier = Modifier
                         .padding(5.dp),
@@ -172,7 +158,7 @@ fun TopTenItem(
 
             }
             Image(
-                painter = painterResource(topTen.imageResourceId),
+                painter = painterResource(poll.imageResourceId),
                 contentDescription = null,
                 modifier = Modifier
                     .weight(.40f)
@@ -188,8 +174,8 @@ fun TopTenItem(
                 .fillMaxWidth(),
             horizontalArrangement = Arrangement.Start
         ) {
-            votesIconButton(topTen)
-            commentsIconButton(topTen)
+            votesIconButton(poll)
+            commentsIconButton(poll)
         }
         HorizontalDivider(modifier = Modifier.padding(4.dp))
     }
