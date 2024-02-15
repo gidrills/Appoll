@@ -1,7 +1,6 @@
 package com.example.appoll.ui.appbars
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
@@ -22,7 +21,7 @@ import com.example.appoll.data.Poll
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainBar(modifier:Modifier){
+fun HomeTopBar(modifier:Modifier){
     TopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primaryContainer,
@@ -50,32 +49,7 @@ fun MainBar(modifier:Modifier){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppollBar(navController: NavHostController, modifier: Modifier){
-    TopAppBar(
-        title = { },
-        actions = {
-            IconButton(onClick = { /* doSomething() */ }) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
-                    contentDescription = "Search icon"
-                )
-            }
-        },
-        navigationIcon = {
-            IconButton(onClick = { navController.navigateUp()}) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back icon"
-                )
-            }
-        },
-        modifier = modifier
-    )
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AppollBar2(
+fun PollTopBar(
     navController: NavHostController,
     modifier: Modifier,
     scrollBehavior: TopAppBarScrollBehavior,

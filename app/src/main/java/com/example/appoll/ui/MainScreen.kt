@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.appoll.ui.scaffolds.SelectedScaffold
 import com.example.appoll.ui.screens.Screens
 
 
@@ -29,7 +28,8 @@ fun MainScreen(modifier: Modifier = Modifier){
             topBarState.value = true
         }
     }
-    SelectedScaffold(modifier, navController)
+
+    BottomNavGraph(navController = navController, modifier)
 
 
 }

@@ -7,31 +7,29 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.appoll.data.Poll
 import com.example.appoll.data.PollRepository
-import com.example.appoll.ui.scaffolds.MainScaffold
+import com.example.appoll.ui.scaffolds.HomeScaffold
 import com.example.appoll.ui.scaffolds.PollScaffold
 import com.example.appoll.ui.screens.Screens
 import java.util.UUID
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
     NavHost(navController=navController,
         startDestination = Screens.Home.route){
         //homeGraph(navController,modifier
         composable(route = Screens.Home.route) {
-            MainScaffold(modifier,navController)
+            HomeScaffold(modifier,navController)
         }
         composable(route = Screens.Settings.route){
-            SettingScreen(modifier)
+            ForYouScreen(modifier)
         }
         composable(route = Screens.Profile.route){
             ProfileScreen(modifier)
         }
         composable(route = Screens.Poll.route + "/{pollId}"){ backStackEntry->
             val pollId = backStackEntry.arguments?.getString("pollId")
-            val pollRepository : PollRepository = PollRepository()
+            val pollRepository = PollRepository()
             PollScaffold(modifier, navController, pollRepository.getPollById(UUID.fromString(pollId))!!)
         }
 
@@ -39,11 +37,15 @@ fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
 }
 
 @Composable
-fun SettingScreen(modifier: Modifier) {
-    Text(text = "Setting",modifier)
+fun ForYouScreen(modifier: Modifier) {
+    Text(text = "ForYou",modifier)
 }
 
 @Composable
 fun ProfileScreen(modifier: Modifier) {
     Text(text = "Profile",modifier)
+}
+@Composable
+fun CreatePollScreen(modifier: Modifier) {
+    Text(text = "Create Poll",modifier)
 }

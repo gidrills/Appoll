@@ -47,7 +47,7 @@ import com.example.appoll.data.Poll
 import com.example.appoll.data.PollOption
 
 @Composable
-fun PollScreen(modifier: Modifier, navController : NavHostController, poll: Poll) {
+fun PollScreen(modifier: Modifier, poll: Poll) {
     val titles = listOf("Rank", "Comments", "Stats")
 
     PollOption(modifier = modifier, titles = titles, poll = poll)
