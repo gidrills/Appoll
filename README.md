@@ -14,8 +14,12 @@
   
 - [ ] **Implementation of Backend Security using Spring Boot:** 
   - Description: Security enhancements using Spring Boot in a new project named AppollBe.
-  - Target Completion Date: March 15, 2024
+  - Target Completion Date: March 18, 2024
   
 - [ ] **Implementation of the First REST APIs using Spring Boot:** 
   - Description: Initial REST APIs development using Spring Boot.
-  - Target Completion Date: March 20, 2024
+  - Target Completion Date: March 25, 2024
+     
+- [ ] **Implementation of the CreatePollScreen** 
+  - Description: User can create a Poll
+  - Target Completion Date: End april, 2024
