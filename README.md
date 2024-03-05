@@ -6,11 +6,11 @@
 
 - [x] **Implementation of the HomeScreen:** 
   - Description: Users can view a list of already created rankings.
-  - Completion Date: February 28, 2024
+  - Completion Date: February 10, 2024
   
 - [x] **Implementation of the PollScreen:** 
   - Description: Users get redirected after selecting a ranking.
-  - Completion Date: March 5, 2024
+  - Completion Date: February 10, 2024
   
 - [ ] **Implementation of Backend Security using Spring Boot:** 
   - Description: Security enhancements using Spring Boot in a new project named AppollBe.
