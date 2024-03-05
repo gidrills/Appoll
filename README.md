@@ -4,14 +4,18 @@
 
 ## Roadmap
 
-- **Implementation of the HomeScreen:** 
+- [x] **Implementation of the HomeScreen:** 
   - Description: Users can view a list of already created rankings.
+  - Completion Date: February 28, 2024
   
-- **Implementation of the PollScreen:** 
+- [x] **Implementation of the PollScreen:** 
   - Description: Users get redirected after selecting a ranking.
+  - Completion Date: March 5, 2024
   
-- **Implementation of Backend Security using Spring Boot:** 
+- [ ] **Implementation of Backend Security using Spring Boot:** 
   - Description: Security enhancements using Spring Boot in a new project named AppollBe.
+  - Target Completion Date: March 15, 2024
   
-- **Implementation of the First REST APIs using Spring Boot:** 
+- [ ] **Implementation of the First REST APIs using Spring Boot:** 
   - Description: Initial REST APIs development using Spring Boot.
+  - Target Completion Date: March 20, 2024
