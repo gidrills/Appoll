@@ -5,11 +5,11 @@
 ## Roadmap
 
 - [x] **Implementation of the HomeScreen:** 
-  - Description: Users can view a list of already created rankings.
+  - Description:  Users can view a list of existing rankings.
   - Completion Date: February 10, 2024
   
 - [x] **Implementation of the PollScreen:** 
-  - Description: Users get redirected after selecting a ranking.
+  - Description: Users are redirected to the PollScreen after selecting a ranking where they can vote for their favorite option.
   - Completion Date: February 10, 2024
   
 - [x] **Implementation of Backend Security using Spring Boot:** 
@@ -17,11 +17,11 @@
   - Completion Date: March 18, 2024
 
 - [ ] **Complete Poll Screen** 
-  - Description: Update the disposition of Components in the screen and add the following functionality: After clicking on like button in Poll Screen, update the counter of likes and update.
+  - Description: Update component layout and implement functionality to update like counters upon user interaction.
   - Target Completion Date: March 28, 2024
      
 - [ ] **Implementation of the CreatePollScreen** 
-  - Description: User can create a Poll
+  - Description: Users can create Polls
   - Target Completion Date: End april, 2024
 
 - [ ] **Implementation of the First REST APIs using Spring Boot:** 
