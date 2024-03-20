@@ -13,22 +13,23 @@ import com.example.appoll.data.Poll
 import com.example.appoll.ui.appbars.PollTopBar
 import com.example.appoll.ui.appbars.AppollBottomBar
 import com.example.appoll.ui.screens.PollScreen
+import com.example.appoll.ui.viewmodel.PollViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PollScaffold(modifier: Modifier, navController: NavHostController, poll: Poll) {
+fun PollScaffold(modifier: Modifier, navController: NavHostController, idPoll: String?, pollTitle: String?) {
 
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     Scaffold (
         topBar={
-            PollTopBar(navController, modifier, scrollBehavior, poll)
+            PollTopBar(navController, modifier, scrollBehavior, pollTitle)
         } ,
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         bottomBar = {
             AppollBottomBar(navController = navController)
         }
     ){
-        PollScreen(modifier = modifier.padding(it), poll)
+        PollScreen(modifier = modifier.padding(it), idPoll)
     }
 }

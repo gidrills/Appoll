@@ -27,7 +27,6 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.material3.TabRow
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,21 +40,26 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.appoll.R
 import com.example.appoll.data.Poll
 import com.example.appoll.data.PollOption
+import com.example.appoll.ui.state.PollOptionUiState
+import com.example.appoll.ui.state.PollOptionsItemUiState
+import com.example.appoll.ui.viewmodel.PollViewModel
 
 @Composable
-fun PollScreen(modifier: Modifier, poll: Poll) {
+fun PollScreen(modifier: Modifier, idPoll: String?) {
     val titles = listOf("Rank", "Comments", "Stats")
 
-    PollOption(modifier = modifier, titles = titles, poll = poll)
+    val pollViewModel= PollViewModel()
+    pollViewModel.fetchPollOptions(idPoll!!)
+
+    PollOption(modifier = modifier, titles = titles, pollOptions = pollViewModel.uiState.pollOptionsItems)
 
 }
 
 @Composable
-fun PollOption(modifier: Modifier, titles:List<String>, poll:Poll){
+fun PollOption(modifier: Modifier, titles:List<String>, pollOptions: List<PollOptionsItemUiState>){
     var state by remember { mutableStateOf(0) }
 
     val density = LocalDensity.current
@@ -70,7 +74,7 @@ fun PollOption(modifier: Modifier, titles:List<String>, poll:Poll){
                 )
             }
 
-            items(poll.options) {
+            items(pollOptions) {
                 PollOptionItem(pollOption = it)
             }
         }
@@ -101,7 +105,7 @@ fun PollOption(modifier: Modifier, titles:List<String>, poll:Poll){
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PollOptionItem(
-    pollOption: PollOption
+    pollOption: PollOptionsItemUiState
 ) {
     var isThumbUpSelecetd by remember { mutableStateOf(false) }
     var isThumbDownSelected by remember { mutableStateOf(false) }

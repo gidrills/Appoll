@@ -53,7 +53,7 @@ fun PollTopBar(
     navController: NavHostController,
     modifier: Modifier,
     scrollBehavior: TopAppBarScrollBehavior,
-    poll: Poll
+    pollTitle: String?
 ) {
     MediumTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors(
@@ -62,7 +62,7 @@ fun PollTopBar(
         ),
         title = {
             Text(
-                poll.title,
+                pollTitle?:"Titolo",
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
