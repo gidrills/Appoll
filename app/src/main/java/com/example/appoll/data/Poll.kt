@@ -17,36 +17,31 @@ data class Poll(
     val user : String,
     val options: List<PollOption>
 )
+val polls = List(7) { index ->
+    val title = when (index) {
+        0 -> "Top Ten sneakers 2023"
+        1 -> "Top Games 2023"
+        2 -> "Top anime 2023"
+        3 -> "Best cities to visit 2023"
+        4 -> "Top Rugby player 2023"
+        5 -> "Best Dota2 proplayer of the year - 2023"
+        6 -> "Best movie 2023"
+        else -> "Title"
+    }
+    val imageResource = when (index) {
+        0 -> R.drawable.sneakers
+        1 -> R.drawable.topgames2023
+        2 -> R.drawable.anime
+        3 -> R.drawable.cities
+        4 -> R.drawable.rugby
+        5 -> R.drawable.dota2
+        6 -> R.drawable.movies
+        else -> R.drawable.default_image
+    }
+    generateRandomTopTen(title, imageResource)
+}
 
-
-val polls = listOf(
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen(),
-    generateRandomTopTen()
-)
-
-fun generateRandomTopTen(): Poll {
-    val titles = listOf(
-        "Top Ten sneakers 2023",
-        "Top Games 2023",
-        "Top anime 2023",
-        "Best cities to visit 2023"
-    )
-
-    val images= listOf(
-        R.drawable.sneakers,
-        R.drawable.topgames2023
-    )
-    val randomTitle = titles.random()
-    val randomImage = images.random()
+fun generateRandomTopTen(title: String, imageResourceId: Int): Poll {
     val id = UUID.randomUUID()
     val randomParticipantCount = (10..1000000).random() // Genera un numero casuale tra 1000 e 10000
 
@@ -58,8 +53,8 @@ fun generateRandomTopTen(): Poll {
 
     return Poll(
         id,
-        randomImage,
-        randomTitle,
+        imageResourceId,
+        title,
         randomParticipantCount,
         randomDescription,
         randomLikes,

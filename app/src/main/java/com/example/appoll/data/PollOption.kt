@@ -19,7 +19,9 @@ fun generateRandomOption():PollOption{
     )
 }
 
-val pollOptions = listOf<PollOption>(
+val pollOptions = listOf(
+    generateRandomOption(),
+    generateRandomOption(),
     generateRandomOption(),
     generateRandomOption(),
     generateRandomOption(),

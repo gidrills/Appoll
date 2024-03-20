@@ -125,7 +125,7 @@ fun PollOptionItem(
                 .fillMaxWidth()
         ) {
             Image(
-                painter = painterResource(R.drawable.topgames2023),
+                painter = painterResource(R.drawable.default_image),
                 contentDescription = null,
                 modifier= Modifier
                     .weight(.40f)

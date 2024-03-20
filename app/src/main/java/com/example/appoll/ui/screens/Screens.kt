@@ -4,6 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.rounded.Edit
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Screens(
@@ -30,5 +31,11 @@ sealed class Screens(
         route = "settings",
         title = "Settings",
         icon = Icons.Default.Settings
+    )
+
+    object CreatePoll: Screens(
+        route = "createPoll",
+        title = "Create Poll",
+        icon = Icons.Rounded.Edit
     )
 }

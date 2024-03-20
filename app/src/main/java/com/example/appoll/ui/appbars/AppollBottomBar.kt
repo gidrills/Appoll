@@ -19,7 +19,7 @@ import com.example.appoll.ui.screens.Screens
 fun AppollBottomBar(navController: NavHostController){
     val screens = listOf(
         Screens.Home,
-        Screens.Settings,
+        Screens.CreatePoll,
         Screens.Profile,
     )
     val navBackStackEntry by navController.currentBackStackEntryAsState()
