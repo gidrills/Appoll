@@ -6,7 +6,7 @@
 ![HomeScreen](githubImages/HomeScreen.png)
 
 ### PollScreen
-![PollScreen](/path/to/PollScreen.png)
+![PollScreen](githubImages/PollScreen.png)
 
 ## Roadmap
 
