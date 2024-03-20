@@ -2,16 +2,11 @@
 
 "Appoll" is a simple application aimed at enabling global sharing of one's preferences. In Appoll, every user will have the opportunity to create rankings on any topic to know what the world thinks and publish them online. Other users will have the ability to interact with the rankings by upvoting/downvoting and commenting on the items within the rankings.
 
-<div style="display: flex; flex-direction: row;">
-  <div style="flex: 1;">
-    ### HomeScreen
-    ![HomeScreen](githubImages/HomeScreen.png)
-  </div>
-  <div style="flex: 1;">
-    ### PollScreen
-    ![PollScreen](githubImages/PollScreen.png)
-  </div>
-</div>
+### HomeScreen
+![HomeScreen](githubImages/HomeScreen.png)
+
+### PollScreen
+![PollScreen](githubImages/PollScreen.png)
 
 ## Roadmap
 
