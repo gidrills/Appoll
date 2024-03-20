@@ -27,10 +27,11 @@ fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
         composable(route = Screens.Profile.route){
             ProfileScreen(modifier)
         }
-        composable(route = Screens.Poll.route + "/{pollId}/{pollTitle}"){ backStackEntry->
-            val pollId = backStackEntry.arguments?.getString("pollId")
-            val pollTitle = backStackEntry.arguments?.getString("pollTitle")
-            PollScaffold(modifier, navController, pollId, pollTitle)
+        composable(route = Screens.Poll.route + "/{pollId}/{pollTitle}"){
+                backStackEntry->
+                val pollId = backStackEntry.arguments?.getString("pollId")
+                val pollTitle = backStackEntry.arguments?.getString("pollTitle")
+                PollScaffold(modifier, navController, pollId, pollTitle)
         }
 
     }

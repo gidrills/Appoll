@@ -62,7 +62,7 @@ fun HomeScreen(modifier: Modifier,
             TopTenItem(poll = it,
                 selectedIndex=selectedIndex,
                 onItemSelected = {index -> selectedIndex = index},
-                onClick = {navController.navigate(Screens.Poll.route+ "/" + it.id)})
+                onClick = {navController.navigate(Screens.Poll.route+ "/" + it.id+"/"+ it.title)})
         }
     }
 }
