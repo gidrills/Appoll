@@ -1,6 +1,6 @@
 ## "Appoll" Overview
 
-"Appoll" is a simple application aimed at enabling global sharing of one's preferences. In Appoll, every user will have the opportunity to create rankings on any topic to know what the world thinks and publish them online. Other users will have the ability to interact with the rankings by upvoting and downvoting the items within the rankings.
+"Appoll" is a simple application aimed at enabling global sharing of one's preferences. In Appoll, every user will have the opportunity to create rankings on any topic to know what the world thinks and publish them online. Other users will have the ability to interact with the rankings by upvoting/downvoting and comenting the items within the rankings.
 
 ## Roadmap
 
