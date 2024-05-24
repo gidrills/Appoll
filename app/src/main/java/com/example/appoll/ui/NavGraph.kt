@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import com.example.appoll.data.PollRepository
 import com.example.appoll.ui.scaffolds.HomeScaffold
 import com.example.appoll.ui.scaffolds.PollScaffold
+import com.example.appoll.ui.screens.CreatePollScreen
 import com.example.appoll.ui.screens.Screens
 import java.util.UUID
 
@@ -23,6 +24,9 @@ fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
         }
         composable(route = Screens.Settings.route){
             ForYouScreen(modifier)
+        }
+        composable(route = Screens.CreatePoll.route){
+            CreatePollScreen()
         }
         composable(route = Screens.Profile.route){
             ProfileScreen(modifier)
@@ -46,7 +50,7 @@ fun ForYouScreen(modifier: Modifier) {
 fun ProfileScreen(modifier: Modifier) {
     Text(text = "Profile",modifier)
 }
-@Composable
+/*@Composable
 fun CreatePollScreen(modifier: Modifier) {
     Text(text = "Create Poll",modifier)
-}
+}*/

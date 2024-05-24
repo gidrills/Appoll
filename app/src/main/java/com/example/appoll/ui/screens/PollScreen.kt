@@ -20,6 +20,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -40,10 +41,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.appoll.R
-import com.example.appoll.data.Poll
-import com.example.appoll.data.PollOption
-import com.example.appoll.ui.state.PollOptionUiState
 import com.example.appoll.ui.state.PollOptionsItemUiState
 import com.example.appoll.ui.viewmodel.PollViewModel
 
@@ -107,7 +106,7 @@ fun PollOption(modifier: Modifier, titles:List<String>, pollOptions: List<PollOp
 fun PollOptionItem(
     pollOption: PollOptionsItemUiState
 ) {
-    var isThumbUpSelecetd by remember { mutableStateOf(false) }
+    var isThumbUpSelected by remember { mutableStateOf(false) }
     var isThumbDownSelected by remember { mutableStateOf(false) }
 
     Card(
@@ -133,45 +132,54 @@ fun PollOptionItem(
                     .clip(MaterialTheme.shapes.extraSmall),
                 contentScale = ContentScale.Crop
             )
-            Text(
-                text = pollOption.title,
-                overflow = TextOverflow.Ellipsis,
-                modifier= Modifier
-                    .weight(1f)
-                    .padding(5.dp)
-            )
-            Column {
-                IconButton(onClick = {  isThumbUpSelecetd= !isThumbUpSelecetd
-                    if (isThumbUpSelecetd) {
-                        isThumbDownSelected = false
-                    }
-                }) {
-                    Icon(
-                        imageVector = if (isThumbUpSelecetd) Icons.Filled.ThumbUp else Icons.Outlined.ThumbUp ,
-                        contentDescription = "Localized description"
-                    )
-                }
-                IconButton(onClick = { isThumbDownSelected = !isThumbDownSelected
-                    if (isThumbDownSelected) {
-                        isThumbUpSelecetd = false
-                    }
-                }) {
-                    Icon(
-                        painter = if (isThumbDownSelected) painterResource(R.drawable.thumb_down_filled_24px) else painterResource(R.drawable.thumb_down_outlined24px),
-                        contentDescription = "Localized description"
-                    )
-                }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = pollOption.title,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier
+                        .padding(5.dp),
+                    fontSize = 15.sp
+                )
+                Text(
+                    text = pollOption.body,
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 2,
+                    fontSize = 10.sp
+                )
+
             }
+            /*Column {
+
+            }*/
 
         }
         Row(
             modifier = Modifier
                 .weight(0.30f, true)
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween) {
-
+            horizontalArrangement = Arrangement.End) {
+            IconButton(onClick = {  isThumbUpSelected = !isThumbUpSelected
+                if (isThumbUpSelected) {
+                    isThumbDownSelected = false
+                }
+            }) {
+                Icon(
+                    imageVector = if (isThumbUpSelected) Icons.Filled.ThumbUp else Icons.Outlined.ThumbUp ,
+                    contentDescription = "Localized description"
+                )
+            }
+            IconButton(onClick = { isThumbDownSelected = !isThumbDownSelected
+                if (isThumbDownSelected) {
+                    isThumbUpSelected = false
+                }
+            }) {
+                Icon(
+                    painter = if (isThumbDownSelected) painterResource(R.drawable.thumb_down_filled_24px) else painterResource(R.drawable.thumb_down_outlined24px),
+                    contentDescription = "Localized description"
+                )
+            }
         }
 
-        Divider()
+        HorizontalDivider()
     }
 }

@@ -72,6 +72,9 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+    // coil, for upload images
+    implementation("io.coil-kt:coil-compose:2.2.0")
+
     //Material Design3
     //implementation("androidx.compose.material3:material3:1.1.2")
 

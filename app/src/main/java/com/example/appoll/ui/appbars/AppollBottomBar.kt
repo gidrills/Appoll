@@ -1,6 +1,5 @@
 package com.example.appoll.ui.appbars
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
