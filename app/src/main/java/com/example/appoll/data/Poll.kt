@@ -15,7 +15,7 @@ data class Poll(
     val likes : Int,
     val comments : Int,
     val user : String,
-    val options: List<PollOption>
+    val options: List<PollChoice>
 )
 val polls = List(7) { index ->
     val title = when (index) {

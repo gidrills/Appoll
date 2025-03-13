@@ -1,18 +1,16 @@
 package com.example.appoll.ui
 
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.appoll.data.PollRepository
 import com.example.appoll.ui.scaffolds.HomeScaffold
+import com.example.appoll.ui.scaffolds.InsertOptionPollScaffold
+import com.example.appoll.ui.scaffolds.MyPollsScaffold
 import com.example.appoll.ui.scaffolds.PollScaffold
-import com.example.appoll.ui.screens.CreatePollScreen
 import com.example.appoll.ui.screens.Screens
-import java.util.UUID
 
 @Composable
 fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
@@ -25,10 +23,15 @@ fun BottomNavGraph(navController: NavHostController,modifier:Modifier){
         composable(route = Screens.Settings.route){
             ForYouScreen(modifier)
         }
-        composable(route = Screens.CreatePoll.route){
-            CreatePollScreen()
+        composable(route = Screens.MyPolls.route){
+            //CreatePollScreen(modifier)
+            MyPollsScaffold(modifier, navController)
         }
-        composable(route = Screens.Profile.route){
+        composable(route = Screens.InsertOptionPoll.route){
+            //CreatePollScreen(modifier)
+            InsertOptionPollScaffold(modifier, navController)
+        }
+        composable(route = Screens.InBox.route){
             ProfileScreen(modifier)
         }
         composable(route = Screens.Poll.route + "/{pollId}/{pollTitle}"){
@@ -48,7 +51,7 @@ fun ForYouScreen(modifier: Modifier) {
 
 @Composable
 fun ProfileScreen(modifier: Modifier) {
-    Text(text = "Profile",modifier)
+    Text(text = "InBox",modifier)
 }
 /*@Composable
 fun CreatePollScreen(modifier: Modifier) {

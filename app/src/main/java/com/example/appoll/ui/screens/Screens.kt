@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.rounded.Edit
+import androidx.compose.material.icons.twotone.DateRange
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Screens(
@@ -22,19 +23,30 @@ sealed class Screens(
         title = "poll",
         icon = null
     )
-    object Profile: Screens(
-        route = "profile",
-        title = "Profile",
+    object InBox: Screens(
+        route = "InBox",
+        title = "InBox",
         icon = Icons.Default.Person
+    )
+
+    object Temporary: Screens(
+        route = "Temporary",
+        title = "Temporary",
+        icon = Icons.TwoTone.DateRange
     )
     object Settings: Screens(
         route = "settings",
         title = "Settings",
         icon = Icons.Default.Settings
     )
+    object MyPolls: Screens(
+        route = "myPolls",
+        title = "My polls",
+        icon = Icons.Rounded.Edit
+    )
 
-    object CreatePoll: Screens(
-        route = "createPoll",
+    object InsertOptionPoll: Screens(
+        route = "insertOptionPoll",
         title = "Create Poll",
         icon = Icons.Rounded.Edit
     )
