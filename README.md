@@ -28,8 +28,8 @@
      
 - [ ] **Implementation of the CreatePollScreen** 
   - Description: Users can create Polls.
-  - Target Completion Date: End of April 2024
+  - Target Completion Date: End of June 2024
 
 - [ ] **Implementation of the First REST APIs using Spring Boot:** 
   - Description: Initial REST APIs development using Spring Boot.
-  - Target Completion Date: March 25, 2024
+  - Target Completion Date: End of July, 2024
