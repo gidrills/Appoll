@@ -12,9 +12,11 @@ import androidx.navigation.NavHostController
 import com.example.appoll.ui.appbars.AppollBottomBar
 import com.example.appoll.ui.appbars.HomeTopBar
 import com.example.appoll.ui.screens.MyPollsScreen
+import com.example.appoll.ui.viewmodel.AuthViewModel
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyPollsScaffold(modifier: Modifier, navController: NavHostController) {
+fun MyPollsScaffold(modifier: Modifier, navController: NavHostController, authViewModel: AuthViewModel) {
     val shadowModifier = modifier.shadow(
         elevation = 3.dp,
         spotColor = Color.DarkGray,

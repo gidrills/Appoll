@@ -11,9 +11,10 @@ import androidx.navigation.NavHostController
 import com.example.appoll.ui.appbars.AppollBottomBar
 import com.example.appoll.ui.appbars.HomeTopBar
 import com.example.appoll.ui.screens.homescreens.HomeScreen
+import com.example.appoll.ui.viewmodel.AuthViewModel
 
 @Composable
-fun HomeScaffold(modifier: Modifier, navController: NavHostController){
+fun HomeScaffold(modifier: Modifier, navController: NavHostController, authViewModel: AuthViewModel){
 
     val shadowModifier = modifier.shadow(
         elevation = 3.dp,

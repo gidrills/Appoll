@@ -9,11 +9,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.appoll.ui.screens.Screens
+import com.example.appoll.ui.viewmodel.AuthViewModel
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MainScreen(modifier: Modifier = Modifier){
+fun MainScreen(modifier: Modifier = Modifier, authViewModel: AuthViewModel){
 
     val navController = rememberNavController()
 
@@ -29,7 +30,7 @@ fun MainScreen(modifier: Modifier = Modifier){
         }
     }
 
-    BottomNavGraph(navController = navController, modifier)
+    BottomNavGraph(navController = navController, modifier, authViewModel)
 
 
 }

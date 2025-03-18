@@ -52,7 +52,8 @@ import com.example.appoll.ui.uivalues.VerySmallPaddingValues
 
 @Composable
 fun HomeScreen(modifier: Modifier,
-               navController : NavHostController) {
+               navController : NavHostController,
+               authViewModel: HomeViewModel = HomeViewModel()) {
 
     val viewModel = HomeViewModel()
     var selectedIndex by rememberSaveable { mutableStateOf(0) }

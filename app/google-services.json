@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "462245299037",
+    "project_id": "appoll-c4996",
+    "storage_bucket": "appoll-c4996.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462245299037:android:69fde63b946d0d0b5bdeb4",
+        "android_client_info": {
+          "package_name": "com.example.appoll"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ-oUB2jtVV1UlMtEemk_WO62KU2OmTOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

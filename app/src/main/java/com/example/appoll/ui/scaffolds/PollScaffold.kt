@@ -26,11 +26,12 @@ import com.example.appoll.ui.appbars.PollTopBar
 import com.example.appoll.ui.appbars.AppollBottomBar
 import com.example.appoll.ui.appbars.searchbar.MySearchBar
 import com.example.appoll.ui.screens.homescreens.PollScreen
+import com.example.appoll.ui.viewmodel.AuthViewModel
 import com.example.appoll.ui.viewmodel.PollOptionsListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PollScaffold(modifier: Modifier, navController: NavHostController, idPoll: String?, pollTitle: String?) {
+fun PollScaffold(modifier: Modifier, navController: NavHostController, idPoll: String?, pollTitle: String?, authViewModel: AuthViewModel) {
     Log.d("chiamato","asdsa")
     //val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
     //val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState()).also {
